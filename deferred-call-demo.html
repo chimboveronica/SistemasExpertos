@@ -1,0 +1,152 @@
+<html>
+    <head>
+        <title>meSpeak.js: Deferred Call Demo</title>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans&amp;subset=latin" rel="stylesheet" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato:300&amp;subset=latin" rel="stylesheet" type="text/css" />
+
+        <script>
+            // This demo is licensed under the GNU GPL.
+        </script>
+        <script type="text/javascript" src="mespeak.js"></script>
+        <script type="text/javascript">
+            function chec() {
+                document.getElementById("fname").focus();
+                var x = document.getElementById("fname");
+                x.value = " ";
+                ///console.log(x.value);
+            }
+            function chec1() {
+                meSpeak.loadConfig("/static/js/mespeak_config.json");
+                meSpeak.loadVoice("/static/voices/es.json");
+                //   meSpeak.speak("Bienvenidos al sitema Novi");
+            }
+            var resultado;
+            var oper;
+            var bandera = true;
+            refresh = false;
+            function myFunction() {
+                var x = document.getElementById("fname");
+                switch (x.value.substring(x.value.length - 1)) {
+                    case "+":
+                        meSpeak.speak(x.value.substr(x.value.length - 1));
+                        resultado = x.value.substring(0, x.value.length - 1);
+                        x.value = " ";
+                        oper = "+";
+                        break;
+                    case "-":
+                        meSpeak.speak(x.value.substr(x.value.length - 1));
+                        resultado = x.value.substring(0, x.value.length - 1);
+                        x.value = " ";
+                        oper = "-";
+                        break;
+                    case "*":
+                        meSpeak.speak("Por");
+                        resultado = x.value.substring(0, x.value.length - 1);
+                        x.value = " ";
+                        oper = "*";
+                        break;
+                    case "/":
+                        meSpeak.speak("Dividido");
+                        resultado = x.value.substring(0, x.value.length - 1);
+                        x.value = " ";
+                        oper = "/";
+                        break;
+                    case "=":
+                        bandera = false;
+                        var res1 = x.value.substring(0, x.value.length - 1);
+                        x.value = " ";
+                        switch (oper) {
+                            case "+":
+                                var op1 = parseFloat(resultado) + parseFloat(res1);
+                                x.value = op1;
+                                meSpeak.speak(op1);
+                               // Concurrent.Thread.create("hola", 1000);
+                                refresh=true;
+                               setTimeout(function (){if (refresh) {meSpeak.speak("Puedes ingresar otra operacion"); x.value = " "; }},500);
+                                break;
+                            case "-":
+                                var op2 = parseFloat(resultado) - parseFloat(res1);
+                                x.value = op2;
+                                meSpeak.speak(op2);
+                                refresh=true;
+                               setTimeout(function (){if (refresh) {meSpeak.speak("Puedes ingresar otra operacion"); x.value = " ";}},500);
+                                break;
+                            case "*":
+                                var op3 = parseFloat(resultado) * parseFloat(res1);
+                                x.value = op3;
+                                meSpeak.speak(op3);
+                                refresh=true;
+                               setTimeout(function (){if (refresh) {meSpeak.speak("Puedes ingresar otra operacion"); x.value = " "; }},500);
+                                break;
+                            case "/":
+                                var op4 = parseFloat(resultado) / parseFloat(res1);
+                                x.value = op4;
+                                meSpeak.speak(op4);
+                                refresh=true;
+                               setTimeout(function (){if (refresh) {meSpeak.speak("Puedes ingresar otra operacion"); x.value = " ";}},500);
+                                break;
+                        }
+                        break;
+                    default:
+                        meSpeak.speak(x.value.substr(x.value.length - 1));
+                        break;
+                }
+                meSpeak.loadConfig("/static/js/mespeak_config.json");
+                meSpeak.loadVoice("/static/voices/es.json");
+                meSpeak.loadConfig("mespeak_config.json");
+                meSpeak.loadVoice("voices/es.json");
+            }
+
+        </script>
+
+        <style type="text/css">
+            html
+            {
+                margin: 0;
+                padding: 2em 1.5em 4.5em 1.5em;
+                background-color: #e2e3e4;
+            }
+            body
+            {
+                max-width: 900px;
+                padding: 2px 40px 60px 40px;
+                margin: 0 auto 0 auto;
+                background-color: #fafafb;
+                color: #111;
+                font-family: 'Open Sans',sans-serif;
+                font-size: 13px;
+                line-height: 19px;
+            }
+            h1,h2,h3
+            {
+                font-family: 'Lato',sans-serif;
+                font-weight: 300;
+            }
+            h1 {
+                font-size: 46px;
+                line-height: 46px;
+                color: #2681a7;
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+                padding: 0;
+            }
+            h2
+            {
+                font-size: 36px;
+                color: #111;
+                margin-top: 0;
+                margin-bottom: 1.5em;
+                clear: both;
+            }
+            h1 span.pict { font-size: 38px; color: #ccc; margin-left: 0.5em; letter-spacing: -2px; }
+            a { color: #006f9e; }
+            a:hover,a:focus { color: #2681a7; }
+            a:active { color: #cd360e; }
+        </style>
+    </head>
+    <body  onload="chec()">
+        <span class="pict"></span>
+        <input type="text" id="fname" onfocus="chec1()" onkeyup="myFunction()">
+    </body>
+</html>
+

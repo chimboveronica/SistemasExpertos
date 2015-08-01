@@ -1,0 +1,97 @@
+test():-write(B).
+
+escribir_saludo(Hour) :-
+   Hour >= 0, Hour < 7, !, write('¡Buenas noches - madrugadas!');
+   Hour >= 7, Hour =< 12, !, write('¡Buenos días!');
+   Hour > 12, Hour < 20, !, write('¡Buenas tardes!');
+   write('¡Buenas noches!').
+
+     
+  escribir_hora_y_fecha(Hour,Minute,Second,Day,Month,Year) :-
+   write(' ¡Son las  '),
+   (
+   Hour =< 9, !, write('0'), write(Hour);
+   write(Hour)
+   ),
+   write(':'),
+   (
+   Minute =< 9, !, write('0'), write(Minute);
+   write(Minute)
+   ),
+   write(':'),
+   (
+   Second =< 9, !, write('0'), write(Second);
+   write(Second)
+   ),
+   write(' horas !  ¡del día  '),
+   write(Day), write(' de '),
+   calcular_mes(Month),
+   write(' del año '), write(Year),write('!').
+   
+   calcular_mes(Month) :-
+   Month =:= 1, !, write('enero');
+   Month =:= 2, !, write('febrero');
+   Month =:= 3, !, write('marzo');
+   Month =:= 4, !, write('abril');
+   Month =:= 5, !, write('mayo');
+   Month =:= 6, !, write('junio');
+   Month =:= 7, !, write('julio');
+   Month =:= 8, !, write('agosto');
+   Month =:= 9, !, write('septiembre');
+   Month =:= 10, !, write('octubre');
+   Month =:= 11, !, write('noviembre');
+   Month =:= 12, write('diciembre').
+   
+dimelahora :-
+   get_time(X),
+   convert_time(X,Year,Month,Day,Hour,Minute,Second,_),
+    escribir_saludo(Hour),
+     escribir_hora_y_fecha(Hour,Minute,Second,Day,Month,Year).
+
+preguntar(Pregunta):-
+    Pregunta==dimelahora, !, dimelahora;
+    Pregunta == cualeselcoordinadordelacarrera, !,write('El cordinador de la carrera es el Ingeniero Roberto Jácome');
+    Pregunta == cualeslasecretariadelacarrera,!,write('La secretaria de la Carrera es la Licenciada Elisíta');
+    Pregunta == cuandoescumpleaniosdediego, !,write('El cumpleaños de Diego es el: 29 de Enero del 1989');
+    Pregunta == cuandoescumpleaniosdevero,!,write('El cumpleaños de Vero es el: 11 de Agosto del 1991');
+    Pregunta == cuandoescumpleaniosdejinsop, !,write('El cumpleaños de Diego es el: 29 de Enero del 1989');
+    Pregunta == cualeslaedaddediego, !,write('La edad de Diego es: 24');
+    Pregunta == cualeslaedaddevero,!,write('La edad de Vero es: 23');
+    Pregunta == cualeslaedaddejinsop, !,write('La edad de Jinsop es: 23');
+    Pregunta == cualesladirecciondediego, !,write('La Direccion de Diego es: Barrio Belen');
+    Pregunta == cualesladirecciondejinsop,!,write('La dirección de Jinsop es: Barrio Tierras Coloradas');
+    Pregunta == cualesladirecciondevero, !, write('La direccion de Vero es: Barrio Consacola');
+    Pregunta == cualessonlosingredientesdelacubalibre, !,write('Los ingredientes de la cubalibre son: '), write('Ron,cocacola,limon,hielo');
+    Pregunta == cualessonlosingredientesdeelpadrino, !, write('Los ingredientes del padrino son: '),write('whisky,crema de cacao, hielo');
+    Pregunta == cualessonlosingredientesdelamichelada, !, write('Los ingredientes de la michelada son: '),write('cerveza, sal, limon, pimienta, cubomaggy');
+    Pregunta == cualessonlosingredientesdeltequila, !, write('Los ingredientes de la tequila son: '),write('tequila, cocacola, limon');
+    Pregunta == cualessonlosingredientesdelsubmarino, !, write('Los ingredientes del submarino son: '),write('ron, cerveza, sal, limon');
+    Pregunta == cualessonlosingredientesdelsaltamontes, !, write('Los ingredientes del saltamontes son: '),write('cremadementa, cacao, lechevaporada, vodka, hielo');
+    Pregunta == cualessonlosingredientesdelcamaleon, !, write('Los ingredientes del camaleon son: '),write('ron, curasao, jugodenaranja, hielo');
+    Pregunta == cualeselprofesordeinteligenciaartificial, !,write('El ingeniero Harman Torres');
+    Pregunta == cualeselprofesordetrabajodetitulcion, !,write('El ingeniero Mario Palma');
+    Pregunta == cualeselprofesordesistemasexpertos, !,write('El ingeniero Roberto Jacome');
+    Pregunta == cualeselprofesordeeticaprofesional, !,write('El Doctor Luis Paz');
+    Pregunta == cualeselprofesordesimulacion, !,write('El ingeniero Roberto Jacome');
+    Pregunta == cualeselprofesordecontrolautomatizado, !,write('El Ingeniero Franco Salcedo');
+    Pregunta == comosellamalasenioradelbar, !,write('La señora del Bar se llama Bachita');
+    Pregunta == quediastengointeligenciaartificial, !,write('Inteligencia artificial tienes los dias: Lunes de 7:30 hasta las 10:30 y el martes de 10:30 hasta las 13:30');
+    Pregunta == quediastengotrabajodetitulcion, !,write('Trabajo de titulacion tienes los dias: Lunes de 10:30 hasta las 13:30 , el miercoles de 7:30 hasta las 10:30 y el viernes de 9:30 hasta las 13:30');
+    Pregunta == quediastengosistemasexpertos, !,write('Sistemas expertos solo tienes el dia: Martes de 7:30 hasta las 10:30 ');
+    Pregunta == quediastengoeticaprofesional, !,write('Etcia Profecional solo tienes el dia Miercoles de 10:30 hasta las 12:30');
+    Pregunta == quediastengocontrolautomatizado, !,write('Control Automatizado solo tienes el dia: Viernes de 7:30 hasta las 9:30');
+    Pregunta == puedofaltar, !,write('No puedes porque ya se termina el tiempo ');
+    Pregunta == comomellamo, !,write('No encuentro tu nombre en la Base de Conocimientos ');
+    write('¡Por ahora no tengo informacion de tu pregunta....!'), write('Me puedes hacer otra pregunta....?').
+
+   
+
+
+
+
+
+
+
+
+
+

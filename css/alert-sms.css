@@ -1,0 +1,40 @@
+/*clase para el marco del mensaje*/
+.mensaje{
+position:absolute; /*posisionamiento el mensaje*/
+display:none;/*ocultar mensaje*/
+top:20%;/*cordenada al tope de la pagina*/
+left:27%; /*cordenada a la izquierda de la pagina*/
+padding-top:8px;/*separacion para el texto del titulo*/
+width:565px;/*tama�os del marco*/
+height: 120px;
+font: 130% arial,sans-serif;/*tipo y tama�o de fuente*/
+text-align:left;/*alineacion del texto*/
+background:#e4e4e4;/*color de fondo*/
+/*bode y sobra del marco*/
+-moz-border-radius:8px;-webkit-border-radius:6px;border-radius:6px; 
+box-shadow:0px 0px 40px gray;
+-webkit-box-shadow:0px 0px 30px gray;
+-moz-box-shadow:0px 0px 40px gray;
+opacity: 1;
+}
+/*clase para el titulo del mensaje*/
+.mensaje:before {/*propiedad del mensaje par mostrar el texto*/
+text-transform: uppercase; /*transformacion a mayusculas*/
+//content: " "attr(name);/*atributo para el contenido del titulo*/
+background:#e4e4e4;/*color de fondo*/
+}
+/*tipos de mensajes*/
+
+.alerta:after { 
+width:500px;
+height:150px; 
+float:left;
+content: url("../img/admin.png")attr(text);
+background:#f4f4f4;
+}
+/*clase para el boton cerrar del mensaje*/
+.boton_cerrar{
+float:right;
+background:#f4f4f4;
+-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px; 
+}
