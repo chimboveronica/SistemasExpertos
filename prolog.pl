@@ -3,7 +3,8 @@ test():-write(B).
 escribir_saludo(Hour) :-
    Hour >= 0, Hour < 7, !, write('¡Buenas noches - madrugadas!');
    Hour >= 7, Hour =< 12, !, write('¡Buenos días!');
-   Hour > 12, Hour < 20, !, write('¡Buenas tardes!');
+   Hour > 12, Hour < 19, !, write('¡Buenas tardes!');
+   Hour > 19, Hour =<24, !, write('¡Buenas Noches!');
    write('¡Buenas noches!').
 
      
