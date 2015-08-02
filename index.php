@@ -27,12 +27,19 @@
 
                         </span> 
                     </a></li>
+                    <li><a href="https://github.com/chimboveronica/SistemasExpertos" class="tooltip-2">Codigo Fuente 
+                        <span> 
+                            <img src="img/link.png"/> 
+
+                        </span> 
+                    </a></li>
 
             </ul>
+         
         </nav>
 
         <header>            
-            <img src="img/fondo.jpg" alt="Sistemas Expertos" width="650" height="900">
+            <img src="img/Robot-inteligente-650x300.jpg" alt="Sistemas Expertos" width="650" height="900"/>
         </header>        
         <iframe id="hiddenFrame" style="display:none;"></iframe>
         <script language="javascript">
@@ -45,16 +52,18 @@
             </fieldset>
             <fieldset id="actions">
                 <button id="submit" class = "btn btn-success" type="submit"  >Preguntar</button>
-                <a href="restablecer.php"  >Pregunta</a>
+                  <img src="img/42538742812932705713.gif"  width="200" />
+               
             </fieldset>
+            
             <fieldset>
                 <div class="geolocalizacion">                
                     <input name = "latitud" type="text" id="latitud">
                     <input name = "longitud" type="text" id="longitud">
                 </div>
             </fieldset>
-        </form>
-
+        </form><br><br><br><br><br><br><br><br>
+ <img src="img/a1.PNG"  width="100%" height="15"/>
         <?php
 
         if (isset($_POST['us']) && isset($_POST['latitud']) && isset($_POST['longitud'])) {
@@ -314,16 +323,7 @@
             exit;
         }
         ?>
-        <div class="overlay-container">
-            <div class="window-container zoomin">
-                <h1>Atención!</h1> 
-                <span class="close">Cerrar</span>
-                <h3>   </h3> 
-                <h3>   </h3> 
-            </div>
-        </div>
-        <footer>            
-
-        </footer>
+       
+          
     </body>
 </html>
